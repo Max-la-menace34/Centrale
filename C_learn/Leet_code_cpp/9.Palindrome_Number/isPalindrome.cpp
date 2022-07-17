@@ -5,6 +5,8 @@
 #include <string.h>
 using namespace std;
 
+//Runtime: 11 ms
+//Memory Usage: 5.8 MB
 
 // Run the code with the following input (Linux Terminal):
 //In the same directory files :

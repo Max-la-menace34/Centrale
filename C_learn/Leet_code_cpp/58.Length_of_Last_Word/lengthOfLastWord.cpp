@@ -4,6 +4,10 @@
 #include <string>
 #include <string.h>
 using namespace std;
+
+//Runtime: 39 ms
+//Memory Usage: 13.9 MB
+
 // Run the code with the following input (Linux Terminal):
 //In the same directory files :
 // g++ -o test -std=c++17 num.cpp name_of_the_file.cpp

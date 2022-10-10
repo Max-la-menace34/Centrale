@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label=<worst area &le; 884.55<br/>gini = 0.468<br/>samples = 483<br/>value = [180, 303]<br/>class = benign>, fillcolor="#afd7f4"] ;
+1 [label=<worst concave points &le; 0.159<br/>gini = 0.171<br/>samples = 329<br/>value = [31, 298]<br/>class = benign>, fillcolor="#4ea7e8"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<worst concave points &le; 0.132<br/>gini = 0.081<br/>samples = 309<br/>value = [13, 296]<br/>class = benign>, fillcolor="#42a1e6"] ;
+1 -> 2 ;
+3 [label=<gini = 0.034<br/>samples = 286<br/>value = [5, 281]<br/>class = benign>, fillcolor="#3d9fe5"] ;
+2 -> 3 ;
+4 [label=<gini = 0.454<br/>samples = 23<br/>value = [8, 15]<br/>class = benign>, fillcolor="#a3d1f3"] ;
+2 -> 4 ;
+5 [label=<worst texture &le; 23.47<br/>gini = 0.18<br/>samples = 20<br/>value = [18, 2]<br/>class = malignant>, fillcolor="#e88f4f"] ;
+1 -> 5 ;
+6 [label=<gini = 0.444<br/>samples = 3<br/>value = [1, 2]<br/>class = benign>, fillcolor="#9ccef2"] ;
+5 -> 6 ;
+7 [label=<gini = 0.0<br/>samples = 17<br/>value = [17, 0]<br/>class = malignant>, fillcolor="#e58139"] ;
+5 -> 7 ;
+8 [label=<worst concavity &le; 0.201<br/>gini = 0.063<br/>samples = 154<br/>value = [149, 5]<br/>class = malignant>, fillcolor="#e68540"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label=<mean texture &le; 21.26<br/>gini = 0.49<br/>samples = 7<br/>value = [3, 4]<br/>class = benign>, fillcolor="#cee6f8"] ;
+8 -> 9 ;
+10 [label=<gini = 0.0<br/>samples = 4<br/>value = [0, 4]<br/>class = benign>, fillcolor="#399de5"] ;
+9 -> 10 ;
+11 [label=<gini = 0.0<br/>samples = 3<br/>value = [3, 0]<br/>class = malignant>, fillcolor="#e58139"] ;
+9 -> 11 ;
+12 [label=<radius error &le; 0.24<br/>gini = 0.014<br/>samples = 147<br/>value = [146, 1]<br/>class = malignant>, fillcolor="#e5823a"] ;
+8 -> 12 ;
+13 [label=<gini = 0.444<br/>samples = 3<br/>value = [2, 1]<br/>class = malignant>, fillcolor="#f2c09c"] ;
+12 -> 13 ;
+14 [label=<gini = 0.0<br/>samples = 144<br/>value = [144, 0]<br/>class = malignant>, fillcolor="#e58139"] ;
+12 -> 14 ;
+}

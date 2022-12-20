@@ -1,0 +1,11 @@
+*.class
+*.lst
+pom.properties
+*.jar
+*.html
+target
+.vscode
+*.project
+*.classpath
+org.eclipse.*
+

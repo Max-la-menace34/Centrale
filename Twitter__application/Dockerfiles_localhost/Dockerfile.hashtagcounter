@@ -1,0 +1,6 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/HashtagCounter-jar-with-dependencies.jar .	
+ENV number=5
+CMD java -jar HashtagCounter-jar-with-dependencies.jar localhost:9092 Extractor Counter ${number}

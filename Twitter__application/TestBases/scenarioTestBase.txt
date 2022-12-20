@@ -1,0 +1,43 @@
+{"tweets": [
+
+{"id":"001","created_at":"2022-06-20T11:46:23Z",
+"text":"Choisissez un #travail que vous aimez et vous n\u0027aurez pas à travailler un seul jour de votre vie",
+"author_id":"31","conversation_id":"01","lang":"fr"},
+
+{"id":"002","created_at":"2022-06-20T11:48:20Z",
+"text":"Si on travaille pour gagner sa vie, pourquoi se tuer au #travail ?",
+"author_id":"31","conversation_id":"01","lang":"fr"},
+
+{"id":"003","created_at":"2022-06-24T06:06:13Z",
+"text":"#Failure is not the opposite of #success: it’s part of success.",
+"author_id":"32","conversation_id":"01","lang":"en"},
+
+{"id":"004","created_at":"2022-07-02T04:44:17Z",
+"text":"You are not your resume, you are your #work.",
+"author_id":"34","conversation_id":"01","lang":"en"},
+
+{"id":"005","created_at":"2022-08-20T10:49:23Z",
+"text":"People who wonder if the glass is half empty or half full miss the point. The glass is refillable.",
+"author_id":"35","conversation_id":"03","lang":"en"},
+
+{"id":"006","created_at":"2022-08-20T11:23:31Z",
+"text":"If you think you are too small to make a difference, try sleeping with a mosquito.",
+"author_id":"33","conversation_id":"04","lang":"en"},
+
+{"id":"007","created_at":"2022-08-30T02:15Z",
+"text":"Nothing will #work unless you do.",
+"author_id":"34","conversation_id":"03","lang":"en"},
+
+{"id":"008","created_at":"2022-09-01T08:30:20Z",
+"text":"If you get tired, learn to rest, not to quit.",
+"author_id":"35","conversation_id":"05","lang":"en"},
+
+{"id":"009","created_at":"2022-09-02T07:55:56Z",
+"text":"#Failure is #success in progress.",
+"author_id":"33","conversation_id":"02","lang":"en"},
+
+{"id":"010","created_at":"2022-09-03T12:40:25Z",
+"text":"The only place #success comes before #work is in the dictionary.",
+"author_id":"36","conversation_id":"07","lang":"en"}
+
+]}

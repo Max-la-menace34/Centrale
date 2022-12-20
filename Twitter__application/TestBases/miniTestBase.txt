@@ -1,0 +1,49 @@
+{"tweets": [
+
+{"id":"1414331888471220228","created_at":"2021-07-11T21:12:53Z",
+"text":"\"There will come a day when I can no longer run. Today is not that day.\" — Unknown",
+"author_id":"204817833","conversation_id":"1414331888471220228","geo":{},"lang":"en"},
+
+{"id":"1388906654956023808","created_at":"2021-05-02T17:22:05Z",
+"text":"\"We don't stop playing because we grow old. We grow old because we stop playing.\" -George Bernard Shaw #run #start #today",
+"author_id":"204817833","conversation_id":"1388906654956023808","geo":{},"lang":"en"},
+
+{"id":"889501314178322432","created_at":"2017-07-24T15:03:34Z",
+"text":"When \"absolutely lost\" became Lac de la Pradella. #found #run #trail #france #fontromeu #triathlete #outside #sweatcollective https://t.co/eJN4UPDD7s",
+"author_id":"262568630","conversation_id":"889501314178322432","geo":{},"lang":"en"},
+
+{"id":"1506180191965560837","created_at":"2022-03-22T08:05:15Z",
+"text":"De bon matin à la @VilleCherbourg #cherbourgencotentin #cotentin #cotentinunique #run #primtemps https://t.co/7mq5ex2E47",
+"author_id":"373510726","conversation_id":"1506180191965560837","geo":{},"lang":"fr"},
+
+{"id":"1357728362316386304","created_at":"2021-02-05T16:30:41Z",
+"text":"[Toulouse Onco Run] 👟
+        
+        La clinique se mobilise cette année encore pour la course Onco Run. Nos personnels répondent toujours présents pour courir en faveur de la recherche contre le cancer ! 🎗️
+        
+        #course #run #oncorun2021 #event #cancer #mobilisation #solidarité https://t.co/XAw95gltYc",
+"author_id":"4350550463","conversation_id":"1357728362316386304","geo":{},"lang":"fr"},
+
+{"id":"1539137819083431937","created_at":"2022-06-21T06:47:06Z",
+"text":"#RunningSession  no 144
+        .
+        We are MRC, we love running. 
+        .
+        #MRC #running #run #runningclub #runnerscommunity #runners #teammrc https://t.co/6EYj93BiV6",
+"author_id":"3088443513","conversation_id":"1539137819083431937","geo":{},"lang":"en"},
+
+{"id":"1208117798146322432","created_at":"2019-12-20T20:11:43Z",
+"text":"Holiday cheer in Zuccotti Park #NYC
+        .
+        https://t.co/fQCqvY0iaz https://t.co/iMmtCzOIVE",
+"author_id":"351658495","conversation_id":"1208117798146322432","geo":{"place_id":"0fc3a2d3a2d47000"},"lang":"en"},
+
+{"id":"743793577755611136","created_at":"2016-06-17T13:13:02Z",
+"text":"Art burst #1 by @FrenzyParis avec notre #fastmagazine dedans #proud #thks @LudovicZuili 
+        Courez y 🏃🏃👍🏻👍🏻 https://t.co/ll2e7nbPX9",
+"author_id":"800086172","conversation_id":"743793577755611136","geo":{"place_id":"09f6a7707f18e0b1"},"lang":"fr"},
+
+{"id":"971437872288067591","created_at":"2018-03-07T17:30:11Z",
+"text":"Y’all! We got #thundersnow! #outmywindow #lowermanhattan #nyc https://t.co/HymaGmhjSS",
+"author_id":"42322841","conversation_id":"971437872288067591","geo":{"place_id":"07d9d22df5c88000"},"lang":"en"}
+]}

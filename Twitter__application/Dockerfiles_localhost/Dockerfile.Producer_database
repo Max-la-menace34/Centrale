@@ -1,0 +1,7 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/MockTwitterStreamRecorded-jar-with-dependencies.jar .
+RUN mkdir -p /TestBases
+COPY ./TestBases/miniTestBase.txt ./TestBases
+CMD java -jar MockTwitterStreamRecorded-jar-with-dependencies.jar localhost:9092 Tweet

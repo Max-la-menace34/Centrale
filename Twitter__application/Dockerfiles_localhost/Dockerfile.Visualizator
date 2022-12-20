@@ -1,0 +1,11 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/Visualizor-jar-with-dependencies.jar .
+VOLUME /tmp/.X11-unix:/tmp/.X11-unix
+ENV leader=5
+ENV DISPLAY=:0.0
+RUN apk update
+RUN apk add ttf-dejavu
+CMD xhost +local:all
+CMD java -jar Visualizor-jar-with-dependencies.jar localhost:9092 Counter ${leader}

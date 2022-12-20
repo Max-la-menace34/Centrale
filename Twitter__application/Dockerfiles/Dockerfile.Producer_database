@@ -1,0 +1,11 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/MockTwitterStreamRecorded-jar-with-dependencies.jar .
+RUN mkdir -p /TestBases
+ENV HOSTNAME=kafka-service
+ENV PORT=9092
+ENV SERVER=kafka-service:9092
+COPY ./TestBases/largeTestBase.txt ./TestBases
+CMD echo ${SERVER}
+CMD java -jar MockTwitterStreamRecorded-jar-with-dependencies.jar ${SERVER} Tweet

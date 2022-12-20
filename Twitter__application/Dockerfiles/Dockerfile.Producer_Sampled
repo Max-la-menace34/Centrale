@@ -1,0 +1,11 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/TweetsProducerStreamSampled-jar-with-dependencies.jar .
+ARG buildtime_variable
+ENV BEARER_TOKEN=$buildtime_variable 
+ENV HOSTNAME=kafka-service
+ENV PORT=9092
+ENV SERVER=kafka-service:9092
+CMD echo ${SERVER}
+CMD java -jar TweetsProducerStreamSampled-jar-with-dependencies.jar ${SERVER} Tweet

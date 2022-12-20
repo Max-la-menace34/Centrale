@@ -1,0 +1,7 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/TweetsProducerStreamSampled-jar-with-dependencies.jar .
+ARG buildtime_variable
+ENV BEARER_TOKEN=$buildtime_variable 
+CMD java -jar TweetsProducerStreamSampled-jar-with-dependencies.jar localhost:9092 Tweet

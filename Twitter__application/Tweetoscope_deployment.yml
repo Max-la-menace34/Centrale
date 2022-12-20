@@ -1,0 +1,175 @@
+ 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: producer
+  template:
+    metadata:
+      name: producer-pod
+      labels:
+        app: producer
+    spec:
+      containers:
+      
+      - name: producer-container
+        image: maxlamenace34/tweetoscope_compose:producer_minidatabase
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/producerdatabase
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name : regcred
+        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producedsampled-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: producedsampled
+  template:
+    metadata:
+      name: producedsampled-pod
+      labels:
+        app: producedsampled
+    spec:
+      containers:
+      
+      - name: producedsampled-container
+        image: maxlamenace34/tweetoscope_compose:producer-sampled
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/producersampled
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: regcred
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: produceddatabase-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: produceddatabase
+  template:
+    metadata:
+      name: produceddatabase-pod
+      labels:
+        app: produceddatabase
+    spec:
+      containers:
+      
+      - name: produceddatabase-container
+        image: maxlamenace34/tweetoscope_compose:producer-database
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/producersampled
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: regcred
+           
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filterlangue-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: filterlangue
+  template:
+    metadata:
+      name: filterlangue-pod
+      labels:
+        app: filterlangue
+    spec:
+      containers:
+      
+      - name: filterlangue-container
+        image: maxlamenace34/tweetoscope_compose:filter_langue
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/langfilter
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name: regcred
+        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filter-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: filter
+  template:
+    metadata:
+      name: filter-pod
+      labels:
+        app: filter
+    spec:
+      containers:
+      
+      - name: filter-container
+        image: maxlamenace34/tweetoscope_compose:emptyfilter
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/emptyfilter
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name: regcred
+        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashtagextractor-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashtagextractor
+  template:
+    metadata:
+      name: hashtagextractor-pod
+      labels:
+        app: hashtagextractor
+    spec:
+      containers:
+      
+      - name: hashtagextractor-container
+        image: maxlamenace34/tweetoscope_compose:extractor
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/hashtagextractor
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name: regcred
+        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashtagcounter-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashtagcounter
+  template:
+    metadata:
+      name: hashtagcounter-pod
+      labels:
+        app: hashtagcounter
+    spec:
+      containers:
+      
+      - name: hashtagcounter-container
+        image: maxlamenace34/tweetoscope_compose:counter
+        #image: gitlab-student.centralesupelec.fr:4567/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/hashtagcounter
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name: regcred
+      

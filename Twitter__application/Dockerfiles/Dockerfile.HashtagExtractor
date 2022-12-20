@@ -1,0 +1,9 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+ENV HOSTNAME=kafka-service
+ENV PORT=9092
+ENV SERVER=kafka-service:9092
+COPY ./tweetoscope/target/HashtagExtractor-jar-with-dependencies.jar .
+CMD echo ${SERVER}
+CMD java -jar HashtagExtractor-jar-with-dependencies.jar ${SERVER} Filter Extractor

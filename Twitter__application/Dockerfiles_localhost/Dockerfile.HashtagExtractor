@@ -1,0 +1,5 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/HashtagExtractor-jar-with-dependencies.jar .
+CMD java -jar HashtagExtractor-jar-with-dependencies.jar localhost:9092 Filter Extractor

@@ -1,0 +1,7 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/LangTweetFilter-jar-with-dependencies.jar .
+ARG buildtime_variable
+ENV langue=$buildtime_variable
+CMD java -jar LangTweetFilter-jar-with-dependencies.jar localhost:9092 Tweet Filter $langue

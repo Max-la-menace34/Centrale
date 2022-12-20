@@ -1,0 +1,10 @@
+#!/bin/sh
+FROM alpine
+RUN apk update ; apk add openjdk11 ;
+COPY ./tweetoscope/target/LangTweetFilter-jar-with-dependencies.jar .
+ENV langue="fr"
+ENV HOSTNAME=kafka-service
+ENV PORT=9092
+ENV SERVER=kafka-service:9092
+CMD echo ${SERVER}
+CMD java -jar LangTweetFilter-jar-with-dependencies.jar ${SERVER} Tweet Filter ${langue}

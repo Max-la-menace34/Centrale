@@ -1,0 +1,101 @@
+stages:
+  - tests_reports
+  - compile_pdf
+  - deploy
+  - build_package
+  - create_docker_images
+
+build_package_producers_job:
+  stage: build_package
+  tags:
+    - docker
+  image: maven:latest
+  script:
+    - mvn -f tweetoscope/pom.xml clean package
+  artifacts:
+    paths:
+      - tweetoscope/target/TweetsProducerStreamFiltered-jar-with-dependencies.jar
+      - tweetoscope/target/TweetsProducerStreamSampled-jar-with-dependencies.jar
+      - tweetoscope/target/MockTwitterStreamRecorded-jar-with-dependencies.jar
+
+build_package_filters_job:
+  stage: build_package
+  tags:
+    - docker
+  image: maven:latest
+  script:
+    - mvn -f tweetoscope/pom.xml clean package
+  artifacts:
+    paths:
+      - tweetoscope/target/LangTweetFilter-jar-with-dependencies.jar
+      - tweetoscope/target/EmptyTweetFilter-jar-with-dependencies.jar
+
+build_package_hastags_job:
+  stage: build_package
+  tags:
+    - docker
+  image: maven:latest
+  script:
+    - mvn -f tweetoscope/pom.xml clean package
+  artifacts:
+    paths:
+      - tweetoscope/target/HashtagExtractor-jar-with-dependencies.jar
+      - tweetoscope/target/HashtagCounter-jar-with-dependencies.jar
+      - tweetoscope/target/Visualizor-jar-with-dependencies.jar
+
+create_docker_images_job:
+  stage: create_docker_images
+  tags:
+    - docker
+  image: 
+    name: gcr.io/kaniko-project/executor:v1.9.0-debug
+    entrypoint: [""]
+  before_script:
+    - mkdir -p /kanicko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$deploy_token\",\"password\":\"$deploy_token_password\"}}}" > /kaniko/.docker/config.json
+  script:
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfiles/Dockerfile.HashtagExtractor" --destination "${CI_REGISTRY}/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/hashtagextractor:latest" --cleanup
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfiles/Dockerfile.hashtagcounter" --destination "${CI_REGISTRY}/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/hashtagcounter:latest" --cleanup
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfiles/Dockerfile.Filter_Lang" --destination "${CI_REGISTRY}/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/langfilter:latest" --cleanup
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfiles/Dockerfile.Producer_Sampled" --destination "${CI_REGISTRY}/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/producersampled:latest" --cleanup
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfiles/Dockerfile.EmptyFilter" --destination "${CI_REGISTRY}/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/emptyfilter:latest" --cleanup
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/Dockerfiles/Dockerfile.Producer_database" --destination "${CI_REGISTRY}/maxime.raillat/tweetoscope22_group-3_ollivier1_levi2_raillat3/producerdatabase:latest" --cleanup
+ 
+tests_reports_job:
+    stage: tests_reports
+    tags:
+    - docker
+    image: maven:latest 
+    script:
+    - mvn -f tweetoscope/pom.xml verify jacoco:report
+    artifacts:
+        reports:
+            junit:
+            - tweetoscope/target/surefire-reports/TEST-*.xml
+        paths:
+        - tweetoscope/target/site/jacoco
+
+compile_pdf_job:
+  stage: compile_pdf
+  image: ctornau/latex
+  script:
+    - latexmk -shell-escape -pdf documentation/report.tex
+  artifacts:
+    paths:
+      - report.pdf
+
+pages: 
+  stage: deploy
+  script:
+    - mkdir public
+    - cp report.pdf public
+    - mkdir -p public/testCoverageReport
+    - cp -r tweetoscope/target/site/jacoco/* public/testCoverageReport/
+  artifacts:
+    paths:
+      - public
+      - public/testCoverageReport
+  only:
+    - main
+
+

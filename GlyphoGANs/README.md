@@ -1,7 +1,3 @@
----
-bibliography:
-- GlyphoGAN.bib
----
 
 
 <table>
@@ -14,7 +10,6 @@ bibliography:
     </td>
   </tr>
 </table>
-----------------------------------------------------------------------------------------------------------------
 
 <center><b>End of study project : Generative Adversarial Networks for automatic
 identification of morphological changes in diatoms exposed to
